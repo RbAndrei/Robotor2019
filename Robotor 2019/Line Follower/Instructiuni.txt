@@ -1,0 +1,8 @@
+Componente robot:
+
+	- Microcontroler STM32F103C8T6 (in KiCad STM32F103C8TX)
+	- Driver motoare L298P
+	- Tensiunea de alimentare a microcontrolerului si a oricarei piese conectate la ea sa fie egale (ex: Daca alimentam procesorul cu 3.3V alimentam si senzorii
+legatii la el cu 3.3V)
+	- 4 hall sensors (encoder)
+	- 10 senzori ITR3807
