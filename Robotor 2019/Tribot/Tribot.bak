@@ -617,9 +617,9 @@ $EndComp
 Connection ~ 8750 2100
 Wire Wire Line
 	8750 2100 8950 2100
-Text GLabel 4250 3450 2    50   Input ~ 0
-S1
 Text GLabel 4250 3550 2    50   Input ~ 0
+S1
+Text GLabel 4250 3450 2    50   Input ~ 0
 S2
 Text GLabel 4250 3650 2    50   Input ~ 0
 S3
@@ -806,7 +806,7 @@ Wire Wire Line
 	6150 1450 6200 1450
 Text GLabel 6200 1450 2    50   Input ~ 0
 EXT_VCC
-Text GLabel 1100 2800 1    50   Input ~ 0
+Text GLabel 650  1300 3    50   Input ~ 0
 EXT_VCC
 $Comp
 L Device:C C9
@@ -2009,15 +2009,15 @@ F 3 "~" H 5850 4200 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Text GLabel 5750 4700 1    50   Input ~ 0
-M1IN1
-Text GLabel 5850 4700 1    50   Input ~ 0
 M1IN2
+Text GLabel 5850 4700 1    50   Input ~ 0
+M1IN1
 Text GLabel 5950 4700 1    50   Input ~ 0
 EnA
 Text GLabel 6750 4700 1    50   Input ~ 0
-M2IN1
-Text GLabel 6850 4700 1    50   Input ~ 0
 M2IN2
+Text GLabel 6850 4700 1    50   Input ~ 0
+M2IN1
 Text GLabel 6950 4700 1    50   Input ~ 0
 EnB
 Text GLabel 5950 4000 1    50   Input ~ 0
@@ -2025,11 +2025,27 @@ EnA_B
 Text GLabel 6950 4000 1    50   Input ~ 0
 EnB_B
 Text GLabel 6750 4000 1    50   Input ~ 0
-M2IN1_B
-Text GLabel 6850 4000 1    50   Input ~ 0
 M2IN2_B
+Text GLabel 6850 4000 1    50   Input ~ 0
+M2IN1_B
 Text GLabel 5850 4000 1    50   Input ~ 0
-M1IN2_B
-Text GLabel 5750 4000 1    50   Input ~ 0
 M1IN1_B
+Text GLabel 5750 4000 1    50   Input ~ 0
+M1IN2_B
+$Comp
+L Simulation_SPICE:DIODE D10
+U 1 1 5D3C17DD
+P 900 1300
+F 0 "D10" H 900 1517 50  0000 C CNN
+F 1 "DIODE" H 900 1426 50  0000 C CNN
+F 2 "Diode_THT:D_A-405_P5.08mm_Vertical_AnodeUp" H 900 1300 50  0001 C CNN
+F 3 "~" H 900 1300 50  0001 C CNN
+F 4 "Y" H 900 1300 50  0001 L CNN "Spice_Netlist_Enabled"
+F 5 "V" H 900 1300 50  0001 L CNN "Spice_Primitive"
+	1    900  1300
+	1    0    0    -1  
+$EndComp
+Connection ~ 1050 1300
+Wire Wire Line
+	650  1300 750  1300
 $EndSCHEMATC
