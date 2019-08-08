@@ -2048,4 +2048,68 @@ $EndComp
 Connection ~ 1050 1300
 Wire Wire Line
 	650  1300 750  1300
+$Comp
+L Switch:SW_Push SW2
+U 1 1 5D4D043A
+P 7000 2800
+F 0 "SW2" V 6954 2948 50  0000 L CNN
+F 1 "SW_Push" V 7045 2948 50  0000 L CNN
+F 2 "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm" H 7000 3000 50  0001 C CNN
+F 3 "~" H 7000 3000 50  0001 C CNN
+	1    7000 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L Switch:SW_Push SW1
+U 1 1 5D4D1350
+P 6400 2800
+F 0 "SW1" V 6354 2948 50  0000 L CNN
+F 1 "SW_Push" V 6445 2948 50  0000 L CNN
+F 2 "Button_Switch_SMD:SW_Push_1P1T_NO_6x6mm_H9.5mm" H 6400 3000 50  0001 C CNN
+F 3 "~" H 6400 3000 50  0001 C CNN
+	1    6400 2800
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6400 2600 6700 2600
+$Comp
+L power:GND #PWR0113
+U 1 1 5D4E8556
+P 6700 2600
+F 0 "#PWR0113" H 6700 2350 50  0001 C CNN
+F 1 "GND" H 6705 2427 50  0000 C CNN
+F 2 "" H 6700 2600 50  0001 C CNN
+F 3 "" H 6700 2600 50  0001 C CNN
+	1    6700 2600
+	-1   0    0    1   
+$EndComp
+Connection ~ 6700 2600
+Wire Wire Line
+	6700 2600 7000 2600
+$Comp
+L Connector_Generic:Conn_01x02 SW_PIN2
+U 1 1 5D4E9E36
+P 6750 3200
+F 0 "SW_PIN2" H 6830 3192 50  0000 L CNN
+F 1 "Conn_01x02" H 6830 3101 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 6750 3200 50  0001 C CNN
+F 3 "~" H 6750 3200 50  0001 C CNN
+	1    6750 3200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6400 3000 6650 3000
+Wire Wire Line
+	7000 3000 6750 3000
+$Comp
+L Connector_Generic:Conn_01x02 SW_PIN1
+U 1 1 5D505287
+P 4450 4050
+F 0 "SW_PIN1" H 4530 4042 50  0000 L CNN
+F 1 "Conn_01x02" H 4530 3951 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 4450 4050 50  0001 C CNN
+F 3 "~" H 4450 4050 50  0001 C CNN
+	1    4450 4050
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
