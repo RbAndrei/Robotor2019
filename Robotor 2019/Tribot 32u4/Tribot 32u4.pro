@@ -1,6 +1,6 @@
-update=08/08/19 21:59:11
+update=08/15/19 19:30:39
 version=1
-last_client=pcbnew
+last_client=kicad
 [general]
 version=1
 RootSch=
@@ -15,7 +15,7 @@ LibDir=
 [pcbnew]
 version=1
 PageLayoutDescrFile=
-LastNetListRead=Tribot.net
+LastNetListRead=Tribot 32u4.net
 CopperLayerCount=2
 BoardThickness=1.6
 AllowMicroVias=0
@@ -61,7 +61,7 @@ OthersTextUpright=1
 SolderMaskClearance=0.051
 SolderMaskMinWidth=0.25
 SolderPasteClearance=0
-SolderPasteRatio=-0
+SolderPasteRatio=0
 [pcbnew/Layer.F.Cu]
 Name=F.Cu
 Type=0

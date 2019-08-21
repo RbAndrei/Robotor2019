@@ -98,19 +98,6 @@ Wire Wire Line
 Connection ~ 4650 2850
 Wire Wire Line
 	4650 2850 4650 3200
-Wire Wire Line
-	2050 2200 2050 1800
-Wire Wire Line
-	2050 1800 2650 1800
-Wire Wire Line
-	2750 1800 2750 1900
-Wire Wire Line
-	2650 1900 2650 1800
-Connection ~ 2650 1800
-Wire Wire Line
-	2650 1800 2750 1800
-Wire Wire Line
-	2650 1500 2650 1800
 $Comp
 L power:+5V #PWR0103
 U 1 1 5D356E1F
@@ -200,8 +187,6 @@ F 3 "~" H 3950 3700 50  0001 C CNN
 	1    3950 3700
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	3250 3700 3550 3700
 $Comp
 L power:+5V #PWR0105
 U 1 1 5D368B8F
@@ -977,8 +962,6 @@ F 3 "~" H 4600 5800 50  0001 C CNN
 	1    4600 5600
 	1    0    0    -1  
 $EndComp
-Text GLabel 3250 4100 2    50   Input ~ 0
-StartBtn
 Text GLabel 4050 5600 0    50   Input ~ 0
 StartBtn
 Wire Wire Line
@@ -1051,12 +1034,10 @@ Text GLabel 9100 800  1    50   Input ~ 0
 S3
 Text GLabel 10050 800  1    50   Input ~ 0
 S4
-Text GLabel 3400 2300 2    50   Input ~ 0
+Text GLabel 3400 2400 2    50   Input ~ 0
 M1IN1
-Text GLabel 3450 4500 2    50   Input ~ 0
+Text GLabel 3400 2300 2    50   Input ~ 0
 M1IN2
-Wire Wire Line
-	3250 4500 3450 4500
 Wire Wire Line
 	3250 2300 3400 2300
 Text GLabel 8000 3850 0    50   Input ~ 0
@@ -1091,23 +1072,107 @@ Wire Wire Line
 	8500 5400 8500 5000
 Wire Wire Line
 	8500 5000 8600 5000
-Text GLabel 3450 4200 2    50   Input ~ 0
+Text GLabel 3250 4500 2    50   Input ~ 0
 M2IN1
-Text GLabel 3450 4400 2    50   Input ~ 0
+Text GLabel 3250 4400 2    50   Input ~ 0
 M2IN2
-Wire Wire Line
-	3250 4200 3450 4200
-Wire Wire Line
-	3250 4400 3450 4400
 $Comp
-L MCU_Microchip_ATmega:ATmega328-PU U1
-U 1 1 5D348BDA
+L MCU_Microchip_ATmega:ATmega328P-AU U1
+U 1 1 5D56EBEE
 P 2650 3400
-F 0 "U1" H 2006 3446 50  0000 R CNN
-F 1 "ATmega328-PU" H 2006 3355 50  0000 R CNN
+F 0 "U1" H 2650 1811 50  0000 C CNN
+F 1 "ATmega328P-AU" H 2650 1720 50  0000 C CNN
 F 2 "Package_QFP:TQFP-32_7x7mm_P0.8mm" H 2650 3400 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/ATmega328_P%20AVR%20MCU%20with%20picoPower%20Technology%20Data%20Sheet%2040001984A.pdf" H 2650 3400 50  0001 C CNN
 	1    2650 3400
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	2650 1500 2650 1700
+$Comp
+L Device:C C15
+U 1 1 5D57E1CC
+P 2900 1700
+F 0 "C15" V 2648 1700 50  0000 C CNN
+F 1 "100n" V 2739 1700 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2938 1550 50  0001 C CNN
+F 3 "~" H 2900 1700 50  0001 C CNN
+	1    2900 1700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2750 1900 2750 1700
+Wire Wire Line
+	2750 1700 2650 1700
+Connection ~ 2750 1700
+Connection ~ 2650 1700
+Wire Wire Line
+	2650 1700 2650 1900
+Wire Wire Line
+	3050 1700 3150 1700
+$Comp
+L power:GND #PWR0127
+U 1 1 5D591C28
+P 3150 1700
+F 0 "#PWR0127" H 3150 1450 50  0001 C CNN
+F 1 "GND" V 3155 1572 50  0000 R CNN
+F 2 "" H 3150 1700 50  0001 C CNN
+F 3 "" H 3150 1700 50  0001 C CNN
+	1    3150 1700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:C C13
+U 1 1 5D597E66
+P 1900 2200
+F 0 "C13" V 1648 2200 50  0000 C CNN
+F 1 "100n" V 1739 2200 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 1938 2050 50  0001 C CNN
+F 3 "~" H 1900 2200 50  0001 C CNN
+	1    1900 2200
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0128
+U 1 1 5D598B6F
+P 1750 2200
+F 0 "#PWR0128" H 1750 1950 50  0001 C CNN
+F 1 "GND" V 1755 2072 50  0000 R CNN
+F 2 "" H 1750 2200 50  0001 C CNN
+F 3 "" H 1750 2200 50  0001 C CNN
+	1    1750 2200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C14
+U 1 1 5D598D04
+P 2400 1700
+F 0 "C14" V 2148 1700 50  0000 C CNN
+F 1 "100n" V 2239 1700 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 2438 1550 50  0001 C CNN
+F 3 "~" H 2400 1700 50  0001 C CNN
+	1    2400 1700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2650 1700 2550 1700
+$Comp
+L power:GND #PWR0129
+U 1 1 5D59F251
+P 2200 1700
+F 0 "#PWR0129" H 2200 1450 50  0001 C CNN
+F 1 "GND" V 2205 1572 50  0000 R CNN
+F 2 "" H 2200 1700 50  0001 C CNN
+F 3 "" H 2200 1700 50  0001 C CNN
+	1    2200 1700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2200 1700 2250 1700
+Wire Wire Line
+	3250 2400 3400 2400
+Wire Wire Line
+	3250 3700 3550 3700
+Text GLabel 3250 4100 2    50   Input ~ 0
+StartBtn
 $EndSCHEMATC
