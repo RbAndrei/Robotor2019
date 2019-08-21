@@ -38,11 +38,11 @@ void loop() {
   if(x){
     digitalWrite(ENA, HIGH);
     analogWrite(M1IN1, 0);
-    analogWrite(M1IN2, 50);
+    analogWrite(M1IN2, 500);
     
     digitalWrite(ENB, HIGH);
     analogWrite(M2IN1, 0);
-    analogWrite(M2IN2, 50);
+    analogWrite(M2IN2, 500);
 
     digitalWrite(LED1, HIGH);
     digitalWrite(LED2, HIGH);

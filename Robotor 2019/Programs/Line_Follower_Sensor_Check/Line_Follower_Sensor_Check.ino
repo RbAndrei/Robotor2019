@@ -1,4 +1,5 @@
  int sensor[10] = {PA0, PA1, PA2, PA3, PA4, PA5, PA6, PA7, PB0, PB1}; /* Desemnam pinii sensorilor de pe Arduino, pot fi notati fi cu A0-A7 fie cu 18-25, au si alte notatii */
+ #define S11 PB8
 
  #define LED1 PB11
  #define LED2 PB10
@@ -7,6 +8,17 @@
 
   int buttonState = 0;
   int lastbuttonState = 0;
+  int sensorValue1;
+  int sensorValue2;
+  int sensorValue3;
+  int sensorValue4;
+  int sensorValue5;
+  int sensorValue6;
+  int sensorValue7;
+  int sensorValue8;
+  int sensorValue9;
+  int sensorValue90;
+  int sensorDigital;
 
 void setup() {
   // put your setup code here, to run once:
@@ -16,6 +28,8 @@ void setup() {
   lastbuttonState = digitalRead(Button);
   for(int i = 0; i<10; i++)
     pinMode(sensor[i], INPUT_ANALOG);
+
+  pinMode(S11, INPUT);
 
   digitalWrite(LED1, HIGH);
   digitalWrite(LED2, HIGH);
@@ -27,12 +41,26 @@ int x = 0;
 
 void loop() {
   // put your main code here, to run repeatedly:
+
+  sensorValue1 = analogRead(sensor[0]);
+  sensorValue2 = analogRead(sensor[1]);
+  sensorValue3 = analogRead(sensor[2]);
+  sensorValue4 = analogRead(sensor[3]);
+  sensorValue5 = analogRead(sensor[4]);
+  sensorValue6 = analogRead(sensor[5]);
+  sensorValue7 = analogRead(sensor[6]);
+  sensorValue8 = analogRead(sensor[7]);
+  sensorValue9 = analogRead(sensor[8]);
+  sensorValue90 = analogRead(sensor[9]);
+  sensorDigital = digitalRead(S11);
+
   
-  if(x >= 10)
+  /*if(x >= 10)
     x = 0;
 
-  for(; x < 10;){
-    Start();
+  for(x = 0; x < 10; x++){
+    sensorValue = analogRead(sensor[x]);
+    
     if(analogRead(sensor[x]) > 200){
       digitalWrite(LED1, HIGH);
       digitalWrite(LED2, HIGH);
@@ -41,7 +69,7 @@ void loop() {
       digitalWrite(LED1, LOW);
       digitalWrite(LED2, LOW);
     }
-  }
+  }*/
   
 }
 
