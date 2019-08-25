@@ -81,23 +81,23 @@ for(int i = 0; i<10; i++){
   if(isnan(d))
     d = d2;
 
-  Speed = 85;
-  kp = 55.5;
-  kd = 105;
-  ki = 0.64;
-  curba0 = 5;
-  curba = 10;
-  curba2 = 15;
-  curba3 = 20;
-  curba4 = 40;
+  Speed = 150;
+  kp = 39.5;
+  kd = 100;
+  ki = 0;
+  curba0 = 10;
+  curba = 15;
+  curba2 = 20;
+  curba3 = 25;
+  curba4 = 30;
         //}
-  if(abs(d) >= 3)
-    ki = 0.35;
+  /*if(abs(d) >= 3)
+    ki = 0.35;*/
    //Serial.println(Speed);
    
    /* Formula de reglare PID */
-   speedA = Speed - ((kp*d)+(kd*(d-d2))+(ki*(d+d2)));
-   speedB = Speed + ((kp*d)+(kd*(d-d2))+(ki*(d+d2)));
+   speedA = Speed + ((kp*d)+(kd*(d-d2))+(ki*(d+d2)));
+   speedB = Speed - ((kp*d)+(kd*(d-d2))+(ki*(d+d2)));
 
    /* Daca valoare vitezei trece peste 255 atunci arduino o scade cu 255 si pune valoarea rezultata ca viteza motoarelor */
    
@@ -178,11 +178,11 @@ for(int i = 0; i<10; i++){
 void Start(void){
   /* Citim starea butonului si daca este diferita de starea anterioara si are valoarea "LOW" se seteaza x ca !x */
   buttonState = digitalRead(Button);
+  digitalWrite(LED2, HIGH); 
     if (buttonState != lastbuttonState){
       if (buttonState == LOW){
         x = !x;
-        if(x){ 
-          digitalWrite(LED2, HIGH); 
+        if(x){
           //Calibrating();
           digitalWrite(LED2, LOW);
           delay(1000);
@@ -223,7 +223,7 @@ void Finding(void){
     
     //Serial.print(s[i]); Serial.print(" "); Serial.print(i); Serial.print(" ");
     
-    if(s[i] > sensorValues[i]){ /* Daca valoarea citita de sensori este mai mare ca 550 se memoreaza valoarea si indicele lui in vectorul valori, respectiv index1 */
+    if(s[i] > 2500){ /* Daca valoarea citita de sensori este mai mare ca 2500 se memoreaza valoarea si indicele lui in vectorul valori, respectiv index1 */
       
       //valori[n] = s[i];
       //Serial.print(valori[n]); Serial.print(" ");
@@ -254,5 +254,5 @@ float error(void){
     //Serial.println();
     Ma = float(sum)/n;
     //Serial.print(Ma); Serial.print(" ");Serial.print(sum); Serial.print(" ");Serial.print(n); Serial.println(" ");
-    return(Ma-6);   
+    return(Ma-5.5);   
 }
