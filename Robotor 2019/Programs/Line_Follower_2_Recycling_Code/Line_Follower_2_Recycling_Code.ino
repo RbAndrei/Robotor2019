@@ -9,6 +9,7 @@
 #define BIN1 PA9 
 #define ENA PB5  //seteaza viteza motoarelor
 #define ENB PC13
+#define digitalSensor PB8
 
 
 int sensor[10] = {PA0, PA1, PA2, PA3, PA4, PA5, PA6, PA7, PB0, PB1}; /* Desemnam pinii sensorilor de pe Arduino, pot fi notati fi cu A0-A7 fie cu 18-25, au si alte notatii */
@@ -38,6 +39,7 @@ int curba3 = 0;
 int curba4 = 0;
 
 void setup() {
+  pinMode(digitalSensor, INPUT);
   pinMode(LED1, OUTPUT);
   pinMode(LED2, OUTPUT);
   pinMode(AIN1, OUTPUT);
@@ -54,18 +56,7 @@ void setup() {
   digitalWrite(LED1, HIGH);
   
   Serial.begin(9600);
-  
-  /*kp = 39.5;
-    kd = 84;
-    ki = 0;
-    curba0 = 10;
-    curba = 15;
-    curba2 = 20;
-    curba3 = 25;
-    curba4 = 30;
-  */
 }
-
 
 void loop() {
 
@@ -74,6 +65,17 @@ for(int i = 0; i<10; i++){
   s[i] = analogRead(sensor[i]); /* Citim valorile sensorilor si le punem intr-un vecctor */
   delay(1); /* Delay de 1 milisecunda penru stabilitate */
 }
+
+    kp = 30;
+    kd = 100;
+    ki = 0.02;
+    curba0 = 10;
+    curba = 15;
+    curba2 = 20;
+    curba3 = 25;
+    curba4 = 30;
+
+  
   d2 = d;
   d = error();
   
@@ -81,19 +83,39 @@ for(int i = 0; i<10; i++){
   if(isnan(d))
     d = d2;
 
-  Speed = 150;
-  kp = 39.5;
-  kd = 100;
-  ki = 0;
-  curba0 = 10;
-  curba = 15;
-  curba2 = 20;
-  curba3 = 25;
-  curba4 = 30;
-        //}
-  /*if(abs(d) >= 3)
-    ki = 0.35;*/
-   //Serial.println(Speed);
+  if(digitalRead(digitalSensor) == 1 && d == 0)
+    Speed = 300;
+    else Speed = 150;
+
+  if(abs(d) >= 3){
+      Speed = 200;
+      kp = 60;
+      kd = 180;
+      ki = 0.14;
+      curba0 = 25;
+      curba = 30;
+      curba2 = 35;
+      curba3 = 40;
+      curba4 = 45;
+    }else if(abs(d) >= 2){ 
+      Speed = 180;
+      kp = 50;
+      kd = 150;
+      ki = 0.09;
+      curba2 = 10;
+      curba3 = 15;
+      curba4 = 20;
+      }else{
+        Speed = 160;
+        kp = 40;
+        kd = 120;
+        ki = 0.05;
+        curba0 = 20;
+        curba = 25;
+        curba2 = 30;
+        }
+  if(abs(d) >= 4)
+    ki = 0.35;
    
    /* Formula de reglare PID */
    speedA = Speed + ((kp*d)+(kd*(d-d2))+(ki*(d+d2)));
@@ -128,15 +150,6 @@ for(int i = 0; i<10; i++){
       else if(speedB < speedA)
         speedB -= curba0;
      }
-   if(speedA > 255)
-      speedA = 255;
-     else if(speedB > 255)
-      speedB = 255;
-  
-     if(speedA < -255)
-      speedA = -255;
-     else if (speedB < -255)
-      speedB = -255;
   //Serial.print(speedA); Serial.print(" "); Serial.println(speedB);
     
   Start();
@@ -170,6 +183,7 @@ for(int i = 0; i<10; i++){
     digitalWrite(ENA, LOW);
   }
 }
+
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
