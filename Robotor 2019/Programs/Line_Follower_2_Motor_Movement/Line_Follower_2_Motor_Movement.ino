@@ -23,12 +23,7 @@ void setup() {
 
 int lastButtonState = digitalRead(BTN1);
 int buttonState = lastButtonState;
-int x = 4;
-float y = 2390.21;
-double z = 502.57;
-long int a = 1203;
-short m = 29;
-
+int x = 0;
 
 void loop() {
   // put your main code here, to run repeatedly:
@@ -38,11 +33,11 @@ void loop() {
   if(x){
     digitalWrite(ENA, HIGH);
     analogWrite(M1IN1, 0);
-    analogWrite(M1IN2, 500);
+    analogWrite(M1IN2, 50);
     
     digitalWrite(ENB, HIGH);
     analogWrite(M2IN1, 0);
-    analogWrite(M2IN2, 500);
+    analogWrite(M2IN2, 50);
 
     digitalWrite(LED1, HIGH);
     digitalWrite(LED2, HIGH);

@@ -12,7 +12,6 @@
 
 
 int sensor[10] = {PA0, PA1, PA2, PA3, PA4, PA5, PA6, PA7, PB0, PB1}; /* Desemnam pinii sensorilor de pe Arduino, pot fi notati fi cu A0-A7 fie cu 18-25, au si alte notatii */
-int sensorValues[10]={200, 170, 170, 170, 170, 170, 170, 170, 170 , 170};
 
 float speedA = 0; /* Deoarece nu exista pinul 0 pe Arduino, incep de la 1, variabilelor le poate fi data valoarea 0, nefiind considerat pin */
 float speedB = 0;
