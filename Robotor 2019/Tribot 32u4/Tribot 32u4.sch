@@ -1197,7 +1197,7 @@ Text GLabel 6750 4000 1    50   Input ~ 0
 M2IN2_B
 Text GLabel 6850 4000 1    50   Input ~ 0
 M2IN1_B
-Text GLabel 5850 4000 1    50   Input ~ 0
+Text GLabel 4250 3150 2    50   Input ~ 0
 M1IN1_B
 Text GLabel 5750 4000 1    50   Input ~ 0
 M1IN2_B
@@ -1213,19 +1213,6 @@ F 3 "~" H 7000 3000 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Switch:SW_Push SW1
-U 1 1 5D4D1350
-P 6400 2800
-F 0 "SW1" V 6354 2948 50  0000 L CNN
-F 1 "SW_Push" V 6445 2948 50  0000 L CNN
-F 2 "Button_Switch_SMD:SW_SPST_EVQPE1" H 6400 3000 50  0001 C CNN
-F 3 "~" H 6400 3000 50  0001 C CNN
-	1    6400 2800
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	6400 2600 6700 2600
-$Comp
 L power:GND #PWR0113
 U 1 1 5D4E8556
 P 6700 2600
@@ -1236,7 +1223,6 @@ F 3 "" H 6700 2600 50  0001 C CNN
 	1    6700 2600
 	-1   0    0    1   
 $EndComp
-Connection ~ 6700 2600
 Wire Wire Line
 	6700 2600 7000 2600
 $Comp
@@ -1250,8 +1236,6 @@ F 3 "~" H 6750 3200 50  0001 C CNN
 	1    6750 3200
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	6400 3000 6650 3000
 Wire Wire Line
 	7000 3000 6750 3000
 $Comp
@@ -1325,25 +1309,19 @@ F 3 "~" H 4600 1400 50  0001 C CNN
 	1    4600 1400
 	-1   0    0    1   
 $EndComp
-Text GLabel 4200 2650 2    50   Input ~ 0
-EnA_B
-Text GLabel 4200 2550 2    50   Input ~ 0
+Text GLabel 4200 2450 2    50   Input ~ 0
 EnB_B
-Text GLabel 4200 3650 2    50   Input ~ 0
+Text GLabel 6650 3000 1    50   Input ~ 0
 M1IN1_B
-Text GLabel 4200 3850 2    50   Input ~ 0
-M1IN2_B
-Text GLabel 4200 3950 2    50   Input ~ 0
-M2IN1_B
 $Comp
 L Connector_Generic:Conn_01x02 SW_PIN1
 U 1 1 5D505287
-P 4400 2950
-F 0 "SW_PIN1" H 4480 2942 50  0000 L CNN
-F 1 "Conn_01x02" H 4480 2851 50  0000 L CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 4400 2950 50  0001 C CNN
-F 3 "~" H 4400 2950 50  0001 C CNN
-	1    4400 2950
+P 4450 2950
+F 0 "SW_PIN1" H 4530 2942 50  0000 L CNN
+F 1 "Conn_01x02" H 4530 2851 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x02_P2.54mm_Vertical" H 4450 2950 50  0001 C CNN
+F 3 "~" H 4450 2950 50  0001 C CNN
+	1    4450 2950
 	1    0    0    -1  
 $EndComp
 Text GLabel 4200 4450 2    50   Input ~ 0
@@ -1354,7 +1332,7 @@ Text GLabel 4200 4650 2    50   Input ~ 0
 S3
 Text GLabel 4200 4750 2    50   Input ~ 0
 S4
-Text GLabel 4200 2450 2    50   Input ~ 0
+Text GLabel 4200 2550 2    50   Input ~ 0
 M2IN2_B
 Text GLabel 4200 4850 2    50   Input ~ 0
 H2
@@ -1791,18 +1769,6 @@ F 3 "~" H 1200 4550 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L Device:R R3
-U 1 1 5D5E9CA7
-P 6250 3000
-F 0 "R3" V 6043 3000 50  0000 C CNN
-F 1 "10K" V 6134 3000 50  0000 C CNN
-F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 6180 3000 50  0001 C CNN
-F 3 "~" H 6250 3000 50  0001 C CNN
-	1    6250 3000
-	0    1    1    0   
-$EndComp
-Connection ~ 6400 3000
-$Comp
 L Device:R R4
 U 1 1 5D5EABDC
 P 7150 3000
@@ -1825,17 +1791,6 @@ F 3 "" H 7300 3000 50  0001 C CNN
 	1    7300 3000
 	0    1    1    0   
 $EndComp
-$Comp
-L power:+5V #PWR0124
-U 1 1 5D5EB490
-P 6100 3000
-F 0 "#PWR0124" H 6100 2850 50  0001 C CNN
-F 1 "+5V" V 6115 3128 50  0000 L CNN
-F 2 "" H 6100 3000 50  0001 C CNN
-F 3 "" H 6100 3000 50  0001 C CNN
-	1    6100 3000
-	0    -1   -1   0   
-$EndComp
 Text GLabel 3000 2850 0    50   Input ~ 0
 5V
 Text GLabel 4000 6400 2    50   Input ~ 0
@@ -1851,4 +1806,70 @@ F 3 "~" H 6150 1600 50  0001 C CNN
 	1    6150 1600
 	0    -1   -1   0   
 $EndComp
+Text GLabel 4200 3950 2    50   Input ~ 0
+M2IN1_B
+Text GLabel 4200 3850 2    50   Input ~ 0
+EnA_B
+Text GLabel 4200 2650 2    50   Input ~ 0
+M1IN2_B
+Wire Wire Line
+	4250 3150 4250 3050
+Wire Wire Line
+	4250 3050 4200 3050
+Connection ~ 4250 3050
+Wire Wire Line
+	4250 2950 4200 2950
+$Comp
+L power:+5V #PWR0124
+U 1 1 5D5EB490
+P 5850 2850
+F 0 "#PWR0124" H 5850 2700 50  0001 C CNN
+F 1 "+5V" V 5865 2978 50  0000 L CNN
+F 2 "" H 5850 2850 50  0001 C CNN
+F 3 "" H 5850 2850 50  0001 C CNN
+	1    5850 2850
+	1    0    0    -1  
+$EndComp
+Connection ~ 5850 3150
+$Comp
+L Device:R R3
+U 1 1 5D5E9CA7
+P 5850 3000
+F 0 "R3" V 5643 3000 50  0000 C CNN
+F 1 "10K" V 5734 3000 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 5780 3000 50  0001 C CNN
+F 3 "~" H 5850 3000 50  0001 C CNN
+	1    5850 3000
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6250 3150 6250 3450
+$Comp
+L Switch:SW_Push SW1
+U 1 1 5D4D1350
+P 6050 3150
+F 0 "SW1" V 6004 3298 50  0000 L CNN
+F 1 "SW_Push" V 6095 3298 50  0000 L CNN
+F 2 "Button_Switch_SMD:SW_SPST_EVQPE1" H 6050 3350 50  0001 C CNN
+F 3 "~" H 6050 3350 50  0001 C CNN
+	1    6050 3150
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5850 3150 5850 4000
+$Comp
+L power:GND #PWR?
+U 1 1 5D6F66DA
+P 6250 3450
+F 0 "#PWR?" H 6250 3200 50  0001 C CNN
+F 1 "GND" H 6255 3277 50  0000 C CNN
+F 2 "" H 6250 3450 50  0001 C CNN
+F 3 "" H 6250 3450 50  0001 C CNN
+	1    6250 3450
+	1    0    0    -1  
+$EndComp
+Text GLabel 4200 3650 2    50   Input ~ 0
+SW
+Text GLabel 5850 3450 0    50   Input ~ 0
+SW
 $EndSCHEMATC
