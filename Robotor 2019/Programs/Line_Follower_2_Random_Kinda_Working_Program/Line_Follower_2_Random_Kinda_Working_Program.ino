@@ -13,7 +13,7 @@
 
 int sensor[10] = {PA0, PA1, PA2, PA3, PA4, PA5, PA6, PA7, PB0, PB1}; /* Desemnam pinii sensorilor de pe Arduino, pot fi notati fi cu A0-A7 fie cu 18-25, au si alte notatii */
 
-float speedA = 0; /* Deoarece nu exista pinul 0 pe Arduino, incep de la 1, variabilelor le poate fi data valoarea 0, nefiind considerat pin */
+float speedA = 0; /* Deoarece nu exista pinul 0 pe Arduino(incep de la 1) variabilelor le poate fi data valoarea 0, nefiind considerat pin */
 float speedB = 0;
 
 
@@ -90,6 +90,39 @@ for(int i = 0; i<10; i++){
   curba3 = 25;
   curba4 = 30;
         //}
+
+
+  if(abs(d) > 3){
+    //Speed = 380;
+    kp = 220;
+    kd = 450;
+    ki = 0.2;
+  }
+  else if(abs(d) > 2.5){
+    //Speed = 310;
+    kp = 170;
+    kd = 360;
+    ki = 0.13;
+  }
+  else if(abs(d) > 2){
+    //Speed = 250;
+    kp = 120;
+    kd = 280;
+    ki = 0.08;
+  }
+  else if(abs(d) > 1.5){
+    //Speed = 200;
+    kp = 85;
+    kd = 210;
+    ki = 0;
+  }
+  else if(abs(d) > 1){
+    //Speed = 170;
+    kp = 55;
+    kd = 150;
+    ki = 0;
+  }
+   
   /*if(abs(d) >= 3)
     ki = 0.35;*/
    //Serial.println(Speed);
@@ -127,16 +160,16 @@ for(int i = 0; i<10; i++){
       else if(speedB < speedA)
         speedB -= curba0;
      }
-   if(speedA > 255)
-      speedA = 255;
-   if(speedB > 255)
-      speedB = 255;
-  
-   if(speedA < -255)
-      speedA = -255;
-   if (speedB < -255)
-      speedB = -255;
   //Serial.print(speedA); Serial.print(" "); Serial.println(speedB);
+
+  if(speedA > 1000)
+    speedA = 1000;
+  if(speedB > 1000)
+    speedB = 1000;
+  if(speedA < -1000)
+    speedA = -1000;
+  if(speedB < -1000)
+    speedB = -1000; 
     
   Start();
   
