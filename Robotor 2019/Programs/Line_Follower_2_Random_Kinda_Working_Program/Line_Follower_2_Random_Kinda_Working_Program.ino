@@ -1,5 +1,4 @@
 #include<math.h>
-
 #define LED1 PB11
 #define LED2 PB10
 #define Button PB9 /*  Se creeaza valori carora le alocam pini, aceeiasi chestie cu "int Button = 13;"*/
@@ -81,48 +80,14 @@ for(int i = 0; i<10; i++){
     d = d2;
 
   Speed = 150;
-  kp = 39.5;
-  kd = 100;
-  ki = 0;
+  kp = 39.5; //39.5
+  kd = 125; //100
+  ki = 0; //0
   curba0 = 10;
   curba = 15;
   curba2 = 20;
   curba3 = 25;
   curba4 = 30;
-        //}
-
-
-  if(abs(d) > 3){
-    //Speed = 380;
-    kp = 220;
-    kd = 450;
-    ki = 0.2;
-  }
-  else if(abs(d) > 2.5){
-    //Speed = 310;
-    kp = 170;
-    kd = 360;
-    ki = 0.13;
-  }
-  else if(abs(d) > 2){
-    //Speed = 250;
-    kp = 120;
-    kd = 280;
-    ki = 0.08;
-  }
-  else if(abs(d) > 1.5){
-    //Speed = 200;
-    kp = 85;
-    kd = 210;
-    ki = 0;
-  }
-  else if(abs(d) > 1){
-    //Speed = 170;
-    kp = 55;
-    kd = 150;
-    ki = 0;
-  }
-   
   /*if(abs(d) >= 3)
     ki = 0.35;*/
    //Serial.println(Speed);
@@ -137,8 +102,7 @@ for(int i = 0; i<10; i++){
        if(speedA < speedB)
          speedA -= curba4;
        else if(speedB < speedA)
-         speedB -= curba4; 
-     }
+         speedB -= curba4;}
      else if(abs(d) > 2.5){
       if(speedA < speedB)
         speedA -= curba3;
@@ -162,14 +126,14 @@ for(int i = 0; i<10; i++){
      }
   //Serial.print(speedA); Serial.print(" "); Serial.println(speedB);
 
-  if(speedA > 1000)
-    speedA = 1000;
-  if(speedB > 1000)
-    speedB = 1000;
-  if(speedA < -1000)
-    speedA = -1000;
-  if(speedB < -1000)
-    speedB = -1000; 
+  if(speedA > 255)
+    speedA = 255;
+  if(speedB > 255)
+    speedB = 255;
+  if(speedA < -255)
+    speedA = -255;
+  if(speedB < -255)
+    speedB = -255;
     
   Start();
   
