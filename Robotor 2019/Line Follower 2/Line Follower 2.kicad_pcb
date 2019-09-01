@@ -5740,7 +5740,7 @@
   (segment (start 244.6655 96.0755) (end 245.745 97.155) (width 0.39) (layer F.Cu) (net 70))
   (segment (start 245.745 97.155) (end 245.745 97.155) (width 0.39) (layer F.Cu) (net 70) (tstamp 5D52580C))
   (segment (start 245.745 97.155) (end 245.745 97.155) (width 0.39) (layer F.Cu) (net 70) (tstamp 5D500904))
-  (via (at 245.745 97.155) (size 1.2) (drill 0.8) (layers F.Cu B.Cu) (net 70))
+  (via (at 245.745 97.155) (size 1.2) (drill 0.8) (layers F.Cu B.Cu) (net 70) (status 1000000))
   (segment (start 245.745 97.155) (end 248.285 97.155) (width 0.39) (layer B.Cu) (net 70))
   (segment (start 248.285 97.155) (end 249.428 98.298) (width 0.39) (layer B.Cu) (net 70))
   (segment (start 249.428 98.298) (end 249.428 111.125) (width 0.39) (layer B.Cu) (net 70))

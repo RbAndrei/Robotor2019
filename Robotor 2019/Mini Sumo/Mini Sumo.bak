@@ -703,10 +703,6 @@ Text GLabel 5000 3750 0    50   Input ~ 0
 M2IN1
 Text GLabel 5000 3650 0    50   Input ~ 0
 M2IN2
-Text GLabel 5000 4350 0    50   Input ~ 0
-H2
-Text GLabel 5000 4250 0    50   Input ~ 0
-H1
 Text GLabel 6300 4350 2    50   Input ~ 0
 DIO
 Text GLabel 6300 4450 2    50   Input ~ 0
