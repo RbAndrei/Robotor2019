@@ -45,23 +45,25 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   int Speed = 40;
+  
   float d = error();
+  float d2 = 0;
+
+  if(isnan(d))
+    d = d2;
   
   Start();
+  
   if(x){
-    if(analogRead(sensor[1]) > 500 && analogRead(sensor[2]) > 500){
-      setLeftSpeed(Speed);
-      setRightSpeed(Speed);
-    }
-    else if(analogRead(sensor[1]) > 500){
-      setLeftSpeed(Speed - 10);
-      setRightSpeed(Speed);
-    }
-    else{
-      setLeftSpeed(Speed);
-      setRightSpeed(Speed - 10);
-    }
+    setLeftSpeed(Speed, d, d2);
+    setRightSpeed(Speed, d, d2);  
   }
+  else {
+    setLeftSpeed(0, 0, 0);
+    setRightSpeed(0, 0, 0);
+  }
+
+  d2 = d;
 }
 
 void Start(void){
@@ -84,7 +86,11 @@ void Start2(void){
   delay(50);
 }
 
-void setLeftSpeed(int Speed){
+void setLeftSpeed(int Speed, float err, float err2){
+  int motorIndex = -1;
+  
+  Speed = PID(Speed, err, err2, motorIndex);
+  
   if(Speed == 0)
     digitalWrite(ENA, LOW);
   else digitalWrite(ENA, HIGH);
@@ -99,8 +105,10 @@ void setLeftSpeed(int Speed){
   }
 }
 
-void setRightSpeed(int Speed, int err){
-  Speed = PID(Speed, err);
+void setRightSpeed(int Speed, float err, float err2){
+  int motorIndex = 1;
+  
+  Speed = PID(Speed, err, err2, motorIndex);
   
   if(Speed == 0)
     digitalWrite(ENB, LOW);
@@ -114,6 +122,19 @@ void setRightSpeed(int Speed, int err){
     analogWrite(M2IN1, 0);
     analogWrite(M2IN2, Speed);
   }
+}
+
+int PID(int Speed, float err, float err2, int motorIndex){
+  int kp = 10;
+  int kd = 5;
+  int ki = 0;
+  
+  int pid = ((kp * err) + (kd * (err - err2)) + (ki * (err + err2)));
+  if(motorIndex == 1)
+    Speed -= pid;
+  else Speed += pid;
+
+  return Speed;
 }
 
 void Finding(void){
@@ -146,8 +167,4 @@ float error(void){
     Ma = float(sum)/n;
   
     return(Ma-2.5);   
-}
-
-int PID(int Speed, int err){
-  
 }
