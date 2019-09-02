@@ -691,13 +691,13 @@ F 3 "" H 2150 2500 50  0001 C CNN
 	1    2150 2500
 	0    1    1    0   
 $EndComp
-Text GLabel 5000 3450 0    50   Input ~ 0
+Text GLabel 5000 2650 0    50   Input ~ 0
 EnA
 Text GLabel 5000 3550 0    50   Input ~ 0
 EnB
-Text GLabel 5000 3350 0    50   Input ~ 0
+Text GLabel 6300 3950 2    50   Input ~ 0
 M1IN1
-Text GLabel 6300 4550 2    50   Input ~ 0
+Text GLabel 6300 4050 2    50   Input ~ 0
 M1IN2
 Text GLabel 5000 3750 0    50   Input ~ 0
 M2IN1

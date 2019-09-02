@@ -1,12 +1,14 @@
 #define ENB PB5
+#define SELB PB8
 #define M2IN1 PB6
 #define M2IN2 PB7
 
 #define Button PA8
 
-//#define ENA PB4
-//#define M1IN1 PB3
-//#define M1IN2 PA15
+#define ENA PC13
+#define SELA PB9
+#define M1IN1 PA9
+#define M1IN2 PA10
 
 #define S1 PA1
 #define S2 PA0
@@ -20,12 +22,14 @@
 void setup() {
   // put your setup code here, to run once:
   pinMode(ENB, OUTPUT);
+  pinMode(SELB, OUTPUT);
   pinMode(M2IN1, OUTPUT);
   pinMode(M2IN2, OUTPUT);
 
-  //pinMode(ENA, OUTPUT);
-  //pinMode(M1IN1, OUTPUT);
-  //pinMode(M2IN2, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(SELA, OUTPUT);
+  pinMode(M1IN1, OUTPUT);
+  pinMode(M2IN2, OUTPUT);
     
   pinMode(Button, INPUT_PULLUP);
 
@@ -62,19 +66,13 @@ void loop() {
   distancevalue4 = digitalRead(ES4);
   dsitancevalue5 = digitalRead(ES5);
 
-  if(!idleState){
     digitalWrite(ENB, HIGH);
-    analogWrite(M2IN1, 1000);
+    analogWrite(M2IN1, 100);
     analogWrite(M2IN2, 0);
 
-    //digitalWrite(ENA, HIGH);
-    //analogWrite(M1IN1, 1000);
-    //analogWrite(M1IN1, 0);
-  }
-  else {
-    //digitalWrite(ENA, LOW);
-    digitalWrite(ENB, LOW);
-  }
+    digitalWrite(ENA, HIGH);
+    analogWrite(M1IN1, 255);
+    analogWrite(M1IN2, 0);
 }
 
 void Start(void){

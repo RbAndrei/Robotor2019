@@ -522,12 +522,12 @@ $Comp
 L Device:R R11
 U 1 1 5D397BF9
 P 4050 1400
-F 0 "R11" H 4120 1446 50  0000 L CNN
-F 1 "100k" H 4120 1355 50  0000 L CNN
+F 0 "R11" V 4250 1350 50  0000 L CNN
+F 1 "100k" V 4150 1300 50  0000 L CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 3980 1400 50  0001 C CNN
 F 3 "~" H 4050 1400 50  0001 C CNN
 	1    4050 1400
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
 Wire Wire Line
 	4200 1400 4200 1700
@@ -1008,7 +1008,7 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	1    0    0    -1  
 $EndComp
 $Comp
-L Driver_Motor:VNH7100BA U5
+L Mini-Sumo-rescue:VNH7100BA-Driver_Motor U5
 U 1 1 5D58D0DD
 P 9250 5400
 F 0 "U5" H 9250 5975 50  0000 C CNN
@@ -1187,7 +1187,7 @@ F 3 "~" H 10650 3760 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Driver_Motor:VNH7100BA U2
+L Mini-Sumo-rescue:VNH7100BA-Driver_Motor U2
 U 1 1 5D5DE765
 P 9250 3900
 F 0 "U2" H 9250 4475 50  0000 C CNN
