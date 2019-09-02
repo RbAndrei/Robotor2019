@@ -1008,7 +1008,7 @@ F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/da
 	1    0    0    -1  
 $EndComp
 $Comp
-L Driver_Motor:VNH7100BA U5
+L Mini-Sumo-rescue:VNH7100BA-Driver_Motor U5
 U 1 1 5D58D0DD
 P 9250 5400
 F 0 "U5" H 9250 5975 50  0000 C CNN
@@ -1187,7 +1187,7 @@ F 3 "~" H 10650 3760 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Driver_Motor:VNH7100BA U2
+L Mini-Sumo-rescue:VNH7100BA-Driver_Motor U2
 U 1 1 5D5DE765
 P 9250 3900
 F 0 "U2" H 9250 4475 50  0000 C CNN

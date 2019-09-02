@@ -42,15 +42,22 @@ void setup() {
   lastButtonState2 = digitalRead(BTN2);
 }
 
+float d2 = 0;
+
 void loop() {
   // put your main code here, to run repeatedly:
-  int Speed = 40;
+  int Speed = 25;
   
   float d = error();
-  float d2 = 0;
+
+  if(d > 0.5)
+    d = 0.5;
+  else if(d < -0.5)
+    d = -0.5;
 
   if(isnan(d))
     d = d2;
+
   
   Start();
   
@@ -90,6 +97,8 @@ void setLeftSpeed(int Speed, float err, float err2){
   int motorIndex = -1;
   
   Speed = PID(Speed, err, err2, motorIndex);
+
+  Serial.print(Speed); Serial.print(" ");
   
   if(Speed == 0)
     digitalWrite(ENA, LOW);
@@ -109,6 +118,8 @@ void setRightSpeed(int Speed, float err, float err2){
   int motorIndex = 1;
   
   Speed = PID(Speed, err, err2, motorIndex);
+
+  Serial.println(Speed);
   
   if(Speed == 0)
     digitalWrite(ENB, LOW);
@@ -125,8 +136,9 @@ void setRightSpeed(int Speed, float err, float err2){
 }
 
 int PID(int Speed, float err, float err2, int motorIndex){
-  int kp = 10;
-  int kd = 5;
+    
+  int kp = 4;
+  int kd = 15;
   int ki = 0;
   
   int pid = ((kp * err) + (kd * (err - err2)) + (ki * (err + err2)));
@@ -140,13 +152,16 @@ int PID(int Speed, float err, float err2, int motorIndex){
 void Finding(void){
   int n = 0;
 
-  for(int i = 0; i < 4; i++)
+  for(int i = 0; i < 4; i++){
     s[i] = analogRead(sensor[i]);
+    //Serial.print(s[i]); Serial.print(" ");
+  }
+  //Serial.println("");
   
   memset(index1, 0, sizeof(index1)); /* Seteaza toate valorile vectorului index1 cu valoarea celui de-al doilea parametru, 0 in cazul acesta */
   
   for(int i = 0; i < 4; i++){   
-    if(s[i] > 500){ /* Daca valoarea citita de sensori este mai mare ca 2500 se memoreaza valoarea si indicele lui in vectorul valori, respectiv index1 */  
+    if(s[i] > 200){ /* Daca valoarea citita de sensori este mai mare ca 2500 se memoreaza valoarea si indicele lui in vectorul valori, respectiv index1 */  
       index1[n] = i+1; /* Se retin pozitia + 1 pentru conditia de la "for" din functia "error" de sub, deoarece i incepe de la 0 */
       n++;
     }

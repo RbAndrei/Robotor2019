@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name Mini-Sumo-rescue)(type Legacy)(uri "${KIPRJMOD}/Mini Sumo-rescue.lib")(options "")(descr ""))
+)
