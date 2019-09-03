@@ -1,4 +1,3 @@
-
 #define ENA 12
 #define ENB 8
 
@@ -25,6 +24,8 @@ int buttonState2 = 0;
 
 void setup() {
   // put your setup code here, to run once:
+  Serial.begin(9600);
+  
   for(int i = 0; i < 4; i++)
     pinMode(sensor[i], INPUT);
 
@@ -42,36 +43,23 @@ void setup() {
   lastButtonState2 = digitalRead(BTN2);
 }
 
-float d2 = 0;
-
 void loop() {
   // put your main code here, to run repeatedly:
-  int Speed = 25;
-  
-  float d = error();
+  int Speed = 21;
 
-  if(d > 0.5)
-    d = 0.5;
-  else if(d < -0.5)
-    d = -0.5;
-
-  if(isnan(d))
-    d = d2;
-
+  for(int i = 0; i < 4; i++)
+    s[i] = analogRead(sensor[i]);
   
   Start();
   
   if(x){
-    Serial.print("");
-    setLeftSpeed(Speed, d, d2);
-    setRightSpeed(Speed, d, d2);
+    setLeftSpeed(Speed);
+    setRightSpeed(Speed);    
   }
   else {
-    setLeftSpeed(0, 0, 0);
-    setRightSpeed(0, 0, 0);
+    digitalWrite(ENA, LOW);
+    digitalWrite(ENB, LOW);
   }
-
-  d2 = d;
 }
 
 void Start(void){
@@ -94,10 +82,11 @@ void Start2(void){
   delay(50);
 }
 
-void setLeftSpeed(int Speed, float err, float err2){
+void setLeftSpeed(int Speed){
   int motorIndex = -1;
+  Speed = PID(Speed, motorIndex);
   
-  Speed = PID(Speed, err, err2, motorIndex);
+  //Serial.print(Speed); Serial.print(" ");
   
   if(Speed == 0)
     digitalWrite(ENA, LOW);
@@ -113,10 +102,11 @@ void setLeftSpeed(int Speed, float err, float err2){
   }
 }
 
-void setRightSpeed(int Speed, float err, float err2){
+void setRightSpeed(int Speed){
   int motorIndex = 1;
+  Speed = PID(Speed, motorIndex);
   
-  Speed = PID(Speed, err, err2, motorIndex);
+  //Serial.println(Speed);
   
   if(Speed == 0)
     digitalWrite(ENB, LOW);
@@ -132,58 +122,39 @@ void setRightSpeed(int Speed, float err, float err2){
   }
 }
 
-int PID(int Speed, float err, float err2, int motorIndex){
-    
-  int kp = 20;
-  int kd = 0;
-  int ki = 0;
+float d;
+float d2, n;
 
-  Serial.print(" ");
+int PID(int Speed, int motorIndex){
+
+  float kp = 0.2;
+  float kd = 0;
+  float ki = 0;
   
-  int pid = ((kp * err) + (kd * (err - err2)) + (ki * (err + err2)));
-  if(motorIndex == 1){
-    Speed -= pid;
-    Serial.print(Speed);
-    }
-  else{
-    Speed += pid;
-    Serial.print(Speed);
-  }
+  if(s[1] < 100 || s[2] < 100)
+    n = 0.0/0;
+  else n = 0;
+
+  if(s[1] < 900)
+    d = (s[1] - 900) / 50;
+  else if(s[1] >= 900)
+    d = (s[1] - 900) / 2;
+  else d = 0;
+
+  
+  if(isnan(n))
+    d = d2;
+
+  //Serial.print(d); Serial.print(" "); Serial.print(s[1]); Serial.print(" "); Serial.print(s[2]); Serial.print(" "); Serial.print(s[1] < 100 || s[2] < 100); Serial.print(isnan(n));
+  //Serial.println("");
+
+  if(motorIndex == 1)
+    Speed += kp * d + (kd*(d - d2)) + (ki*(d+d2));
+  else Speed -= kp * d + (kd*(d - d2)) + (ki*(d+d2));
+
+  Serial.println(Speed);
+  
+  d2 = d;
 
   return Speed;
-}
-
-void Finding(void){
-  int n = 0;
-
-  for(int i = 0; i < 4; i++){
-    s[i] = analogRead(sensor[i]);
-    //Serial.print(s[i]); Serial.print(" ");
-  }
-  //Serial.println("");
-  
-  memset(index1, 0, sizeof(index1)); /* Seteaza toate valorile vectorului index1 cu valoarea celui de-al doilea parametru, 0 in cazul acesta */
-  
-  for(int i = 0; i < 4; i++){   
-    if(s[i] > 200){ /* Daca valoarea citita de sensori este mai mare ca 2500 se memoreaza valoarea si indicele lui in vectorul valori, respectiv index1 */  
-      index1[n] = i+1; /* Se retin pozitia + 1 pentru conditia de la "for" din functia "error" de sub, deoarece i incepe de la 0 */
-      n++;
-    }
-  }
-   
-}
-
-float error(void){
-    Finding();
-    
-    int n = 0;
-    int sum = 0;
-    float Ma = 0.0;
-    for(int i = 0; index1[i] != 0 && i < 4; i++){
-      sum += index1[i];
-      n++;
-    }
-    Ma = float(sum)/n;
-  
-    return(Ma-2.5);   
 }
